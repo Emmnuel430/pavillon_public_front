@@ -268,7 +268,11 @@ function LayoutPublic({ children }) {
             {/* Logo */}
             <div className="w-full md:w-1/2 lg:w-[25%]">
               <img
-                src={settings.logo2 ? `${STORAGE}/${settings.logo2}` : logo}
+                src={
+                  settings.logo_footer
+                    ? `${STORAGE}/${settings.logo_footer}`
+                    : logo
+                }
                 alt="Logo footer"
                 className="mx-auto md:mx-0 h-36 object-contain rounded-lg"
               />
