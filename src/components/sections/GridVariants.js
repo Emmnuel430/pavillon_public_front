@@ -298,8 +298,9 @@ export const GridBlogCards = ({ section }) => {
                       />
                       <Link
                         to={`/subsection/${item.id}`}
+                        state={{ type: "blog" }}
                         className="montserrat text-yellow-500 font-bold hover:underline text-xs w-fit mt-2 inline-block p-2 border border-yellow-500 bg-yellow-50 rounded 
-               hover:bg-yellow-500 hover:text-white hover:border-yellow-500 transition duration-300"
+     hover:bg-yellow-500 hover:text-white hover:border-yellow-500 transition duration-300"
                       >
                         Lire plus →
                       </Link>
