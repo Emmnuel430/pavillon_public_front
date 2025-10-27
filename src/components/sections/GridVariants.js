@@ -769,6 +769,7 @@ export function GalerieGrid({ section }) {
   const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const sectionGaleryRef = useRef(null);
 
   const LINK = process.env.REACT_APP_API_URL;
   const STORAGE = process.env.REACT_APP_API_BASE_URL_STORAGE;
@@ -810,7 +811,11 @@ export function GalerieGrid({ section }) {
     }));
 
   return (
-    <div id="galerie" className="container mx-auto py-20">
+    <div
+      id="galerie"
+      ref={sectionGaleryRef}
+      className="container mx-auto py-20"
+    >
       <div className="max-w-6xl mx-auto mb-14 px-6 xl:px-0 text-center">
         <h2 className="text-3xl md:text-4xl font-semibold text-primary">
           {section.title}
@@ -913,7 +918,14 @@ export function GalerieGrid({ section }) {
               {Array.from({ length: totalPages }).map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setPage(i + 1)}
+                  onClick={() => {
+                    setPage(i + 1);
+                    // 🔹 Scroll vers la section au lieu de toute la page
+                    sectionGaleryRef.current?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }}
                   className={`montserrat px-4 py-2 rounded-full border transition ${
                     page === i + 1
                       ? "bg-primary text-white border-primary"

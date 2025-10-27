@@ -43,38 +43,42 @@ export default function SubsectionDetail() {
       ) : !item ? (
         <p className="text-center text-red-500">Contenu introuvable.</p>
       ) : (
-        <div className="max-w-4xl mt-[11rem] mb-3 mx-auto p-6 bg-white rounded-2xl shadow-md space-y-6">
-          {/* 🔹 Titre */}
-          <h2 className="text-3xl font-semibold text-gray-800">{item.title}</h2>
+        <div className="max-w-4xl mt-[7rem] md:mt-[10rem] mb-3 mx-auto ">
+          <div className="border mx-4 bg-white rounded-2xl shadow-md space-y-6 p-6">
+            {/* 🔹 Titre */}
+            <h2 className="text-3xl font-semibold text-gray-800">
+              {item.title}
+            </h2>
 
-          {/* 🔹 Date */}
-          {(item.publish_at || item.date || item.created_at) && (
-            <p className="text-sm text-gray-500">
-              📅{" "}
-              {new Date(
-                item.publish_at || item.date || item.created_at
-              ).toLocaleDateString()}
-            </p>
-          )}
+            {/* 🔹 Date */}
+            {(item.publish_at || item.date || item.created_at) && (
+              <p className="text-sm text-gray-500">
+                📅{" "}
+                {new Date(
+                  item.publish_at || item.date || item.created_at
+                ).toLocaleDateString()}
+              </p>
+            )}
 
-          {/* 🔹 Image */}
-          {item.image && (
-            <div className="overflow-hidden rounded-lg shadow-md">
-              <img
-                src={`${LINK}/storage/${item.image}`}
-                alt={item.title}
-                className="w-full max-h-[60vh] object-cover"
-              />
-            </div>
-          )}
+            {/* 🔹 Image */}
+            {item.image && (
+              <div className="overflow-hidden rounded-lg shadow-md">
+                <img
+                  src={`${LINK}/storage/${item.image}`}
+                  alt={item.title}
+                  className="w-full max-h-[60vh] object-cover"
+                />
+              </div>
+            )}
 
-          {/* 🔹 Contenu HTML */}
-          <div
-            className="prose prose-lg max-w-none text-gray-700"
-            dangerouslySetInnerHTML={{
-              __html: item.content ? cleanHTML(item.content) : "",
-            }}
-          />
+            {/* 🔹 Contenu HTML */}
+            <div
+              className="prose prose-lg max-w-none text-gray-700"
+              dangerouslySetInnerHTML={{
+                __html: item.content ? cleanHTML(item.content) : "",
+              }}
+            />
+          </div>
         </div>
       )}
     </LayoutPublic>
