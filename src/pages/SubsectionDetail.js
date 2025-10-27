@@ -1,8 +1,8 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import LayoutPublic from "../layouts/LayoutPublic";
-import Loader from "../components/Loader";
 import { cleanHTML } from "../utils/cleanHtml";
+import LayoutPublic from "../components/public_layout/LayoutPublic";
+import Loader from "../components/Layout/Loader";
 
 export default function SubsectionDetail() {
   const { id } = useParams();
